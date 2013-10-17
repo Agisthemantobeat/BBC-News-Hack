@@ -14,20 +14,17 @@
 	
 	function getSectionIndex(section, key) {
 		$.ajax({
-		  url: "http://bbc.api.mashery.com/content/asset/news/" + section + "?api_key=" + key,
-		  headers: {
-		  	'X-Candy-Platform': 'Desktop',
-    		'X-Candy-Audience': 'Domestic',
-    		'Accept': 'application/json',
-    		},
+		  url: "http://euanmorrison.co.uk/newshack/euan/interface.php?url=http://bbc.api.mashery.com/content/asset/news/" + section + "?api_key=" + key,
 		  success: function( data ) {
-			extractSectionIndexData(data);
+			extractSectionIndexData(jQuery.parseJSON(data));
 		  }
 		});
 	}
 	
 	function extractSectionIndexData(data) {
-		var results = data.results[0];
+		var results = data.results;
+		results = results[0];
+		
 		var groups = results.groups;
 		
 		for(var i = 0; i < groups.length; i++) {
