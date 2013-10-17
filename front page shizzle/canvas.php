@@ -27,7 +27,8 @@ svg {
 <div id="container">
 
 </div>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var radius = 40,
@@ -82,6 +83,8 @@ d3.json("showjson.php", function(error, data) {
       .text(function(d) { return d.category; });
       
   // DON'T KNOW HOW TO SELECT THE INDIVIDUAL ELEMENTS RATHER THAN THEM ALL
+  
+  $("svg").wrap("<div class='svg_wrapper'></div>");
   
   svg.on("mouseover", function(d) {
   	//alert(d.category);
