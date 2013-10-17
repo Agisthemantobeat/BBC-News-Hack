@@ -1,0 +1,59 @@
+[
+	{
+		"category": "Trending",
+		"sectionId": "front_page"
+	}, 	
+	{
+		"category": "World",
+		"sectionId": "world"
+	},
+		{
+		"category": "UK",
+		"sectionId": "uk"
+	},
+		{
+		"category": "England",
+		"sectionId": "england"
+	},
+	{
+		"category": "N. Ireland",
+		"sectionId": "northern_ireland"
+	},
+	{
+		"category": "Scotland",
+		"sectionId": "scotland"
+	},
+	{
+		"category": "Wales",
+		"sectionId": "wales"
+	},
+	{
+		"category": "Business",
+		"sectionId": "business"
+	},
+	{
+		"category": "Politics",
+		"sectionId": "politics"
+	},
+	{
+		"category": "Health",
+		"sectionId": "health"
+	},
+	{
+		"category": "Education",
+		"sectionId": "education"
+	},
+	{
+		"category": "Science & Env.",
+		"sectionId": "science_and_environment"
+	},
+	{
+		"category": "Technology",
+		"sectionId": "technology"
+	},
+	{
+		"category": "Entertainment & Arts",
+		"sectionId": "entertainment_and_arts"
+	}
+	
+]
