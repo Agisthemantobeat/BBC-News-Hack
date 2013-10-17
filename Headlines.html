@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	
+	<script>
+	
+	var stories = [];
+
+	getSectionIndex("front_page", "55e5w5gwnjyfg7z5rd7v8s93");
+	
+	function getSectionIndex(section, key) {
+		$.ajax({
+		  url: "http://bbc.api.mashery.com/content/asset/news/" + section + "?api_key=" + key,
+		  headers: {
+		  	'X-Candy-Platform': 'Desktop',
+    		'X-Candy-Audience': 'Domestic',
+    		'Accept': 'application/json',
+    		},
+		  success: function( data ) {
+			extractSectionIndexData(data);
+		  }
+		});
+	}
+	
+	function extractSectionIndexData(data) {
+		var results = data.results[0];
+		var groups = results.groups;
+		
+		for(var i = 0; i < groups.length; i++) {
+			if (groups[i].type === "container-now") {
+				var containerGroups = groups[i].groups;
+				
+				for(var c = 0; c < containerGroups.length; c++) {
+					if (typeof containerGroups[c].groups != 'undefined') { 
+						var innerGroups = containerGroups[c].groups;
+						for (var j = 0; j < innerGroups.length; j++) {
+							if (typeof innerGroups[j].items != 'undefined') {
+								extractItemFrom(innerGroups[j].items);
+							}
+						}
+					} 
+				}
+			}
+		}
+	}
+	
+	
+	function extractItemFrom(items) {
+		if (items.length < 1) {
+			return;
+		}
+							
+		var story = { 
+			summary: items[0].summary,
+			lastUpdated: items[0].lastUpdated,
+			firstCreated: items[0].firstCreated,
+			media: items[0].media,
+			assetUri: items[0].assetUri,
+			headline: items[0].headline
+		};					
+		stories.push(story);
+	}
+	
+	</script>
+</head>
+<body>
+
+<div id="content">
+
+</div>
+	
+
+</body>
+</html>
