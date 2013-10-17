@@ -1,0 +1,59 @@
+[
+	{
+		displayLabel: "Front Page",
+		sectionId: "front_page",
+	}, 	
+	{
+		displayLabel: "World",
+		sectionId: "world",
+	},
+		{
+		displayLabel: "UK",
+		sectionId: "uk",
+	},
+		{
+		displayLabel: "England",
+		sectionId: "england",
+	},
+	{
+		displayLabel: "N. Ireland",
+		sectionId: "northern_ireland",
+	},
+	{
+		displayLabel: "Scotland",
+		sectionId: "scotland",
+	},
+	{
+		displayLabel: "Wales",
+		sectionId: "wales",
+	},
+	{
+		displayLabel: "Business",
+		sectionId: "business",
+	},
+	{
+		displayLabel: "Politics",
+		sectionId: "politics",
+	},
+	{
+		displayLabel: "Health",
+		sectionId: "health",
+	},
+	{
+		displayLabel: "Education",
+		sectionId: "education",
+	},
+	{
+		displayLabel: "Science and Environment",
+		sectionId: "science_and_environment",
+	},
+	{
+		displayLabel: "Technology",
+		sectionId: "technology",
+	},
+	{
+		displayLabel: "Entertainment and Arts",
+		sectionId: "entertainment_and_arts",
+	},
+	
+]
