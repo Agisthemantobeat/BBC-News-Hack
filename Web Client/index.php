@@ -31,6 +31,21 @@
 
   <body>
 
+	  <script>
+	  function showLower() {
+		var h = document.documentElement.scrollHeight;
+		var offset = $(".lower_view").offset().top + 15;
+		var new_h = h - offset;
+		
+		$("#article_tooltip").hide();
+		
+		$(".lower_view").height(0);
+		$(".lower_view").animate({
+			height: (h - offset) + "px"
+		}, 500 ); // how long the animation should 
+	  };
+	  </script>
+	  
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -75,6 +90,9 @@
         <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>-->
       </div>
+	  <div class="lower_view" >
+		<div id="article_tooltip">Choose a topic to view articles</div>
+	  </div>
 
 
 

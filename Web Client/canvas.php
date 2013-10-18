@@ -12,6 +12,7 @@
 	font: 14pt Verdana;
 }
 
+
 svg {
   padding: 10px 0 0 50px;
   width:auto;
@@ -61,7 +62,7 @@ var radius = 40,
     padding = 10;
 
 var color = d3.scale.ordinal()
-    .range(["#BFCCDE", "#8a89a6"]);
+    .range(["#606060", "#B0B0B0"]);
 
 var arc = d3.svg.arc()
     .outerRadius(radius)
@@ -126,7 +127,7 @@ d3.json("showjson.php", function(error, data) {
 			
 			$(this).find("g").find("text").each(function(inner) {
 				if (i % 2 == 0) {
-					$(this).parent().parent().wrap("<a href='?id=" + selections[i].id + "' style='cursor:pointer;width:inherit;height:inherit;' ></a>");
+					$(this).parent().parent().wrap("<a style='cursor:pointer;width:inherit;height:inherit;' onclick='showLower();' ></a>");
 				}
 				i++;
 			});
