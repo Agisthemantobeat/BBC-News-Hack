@@ -13,8 +13,9 @@
 	getSectionIndex("url dcterms:identifier '24563189'", "55e5w5gwnjyfg7z5rd7v8s93");
 	
 	function getSectionIndex(section, key) {
+		var apiCall = encodeURI("http://bbc.api.mashery.com/juicer-ld-api/articles.json?binding=url&limit=5&where=?" + section + "&api_key=" + key);
 		$.ajax({
-		  url: "http://bbc.api.mashery.com/juicer-ld-api/articles.json?binding=url&limit=5&where=?" + section + "&api_key=" + key,
+		  url: "http://euanmorrison.co.uk/newshack/euan/interface.php?url=" + apiCall,
 		 
 		  success: function( data ) {
 			extractSectionIndexData(data);

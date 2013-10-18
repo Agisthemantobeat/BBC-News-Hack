@@ -14,10 +14,10 @@
 	
 	function getSectionIndex(section, key) {
 		$.ajax({
-		  url: "http://bbc.api.mashery.com/juicer-ld-api/storylines/graphs?uri=" + section + "&api_key=" + key,
+		  url: "http://euanmorrison.co.uk/newshack/euan/interface.php?url=http://bbc.api.mashery.com/juicer-ld-api/storylines/graphs?uri=" + section + "&api_key=" + key,
 		 
 		  success: function( data ) {
-			extractSectionIndexData(data);
+			extractSectionIndexData(jQuery.parseJSON(data));
 		  }
 		});
 	}
@@ -26,25 +26,24 @@
 		var graphs = data['@graph'];
 		for(var i=0;i < graphs.length; i++)		
 		{
-			if (graphs[i].type ==="event")
+			if (graphs[i]['@type'] === "Event")
 			{
 				var node =
 				{
-				title: graphs[i].preferredLabel,
-				eventStartDate: graphs[i].eventStartDate
-				}
-					if (typeof graphs[i].taggedOn != 'false')
-					{
-						var newsitem = graphs[i].taggedOn;
-						node.newsitem = newsitem.id,
-						node.dateCreated = newsitem.dateCreated,
-						node.description = newsitem.description
-					}
-					else
-					{
-						newsitem: "No article!";
-					}			
+					title: graphs[i].preferredLabel,
+					eventStartDate: graphs[i].eventStartDate
+				};
 				
+				if (typeof graphs[i].taggedOn != 'undefined')
+				{
+					var newsitem = graphs[i].taggedOn;
+					if (newsitem['@type'] === "NewsItem") {
+						node.newsitem = newsitem['@id'],
+						node.dateCreated = newsitem.dateCreated,
+						node.description = newsitem.description;
+					}
+				}
+				nodes.push(node);
 			}
 		}
 	}
