@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!--<link rel="shortcut icon" href="../../assets/ico/favicon.png">
--->
-    <title>Theme Template for Bootstrap</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <title>news.dash</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -18,10 +17,13 @@
     <!--<link href="theme.css" rel="stylesheet">
 -->
     <!-- JQuery -->
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <!--<script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
 -->
+
+<script src="controller.js"></script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -32,18 +34,34 @@
   <body>
 
 	  <script>
-	  function showLower() {
+	  function showLower(topic) {
+	  //alert(topic);
 		var h = document.documentElement.scrollHeight;
 		var offset = $(".lower_view").offset().top + 15;
 		var new_h = h - offset;
-		
+		//alert();
 		$("#article_tooltip").hide();
+		$("#left").show(1000);
+		$("#right").show(1000);
 		
+		buildHeadlines(topics[topic].stories);
 		$(".lower_view").height(0);
 		$(".lower_view").animate({
 			height: (h - offset) + "px"
 		}, 500 ); // how long the animation should 
+		//alert(topics[topic].stories.length);
 	  };
+	  
+	  // function loadArticles() {
+		// $.ajax({
+		  // url: "#",
+		  // success: function() {
+			
+			//$(".lower_view").load('controller.html');
+			//$(".lower_view").html('<object data="controller.html">');
+		  // }
+		// });
+	  // };
 	  </script>
 	  
     <!-- Fixed navbar -->
@@ -92,6 +110,15 @@
       </div>
 	  <div class="lower_view" >
 		<div id="article_tooltip">Choose a topic to view articles</div>
+		<div id="left">
+		</div>
+
+		<div id="right">
+
+			<div id="previewbox">
+			</div>
+
+		</div>
 	  </div>
 
 
@@ -105,5 +132,7 @@
     <!--<script src="../../assets/js/jquery.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/holder.js"></script>-->
+	
+
   </body>
 </html>

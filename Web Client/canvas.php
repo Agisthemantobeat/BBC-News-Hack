@@ -127,7 +127,8 @@ d3.json("showjson.php", function(error, data) {
 			
 			$(this).find("g").find("text").each(function(inner) {
 				if (i % 2 == 0) {
-					$(this).parent().parent().wrap("<a style='cursor:pointer;width:inherit;height:inherit;' onclick='showLower();' ></a>");
+					$(this).parent().parent().wrap("<a style='cursor:pointer;width:inherit;height:inherit;' onclick='showLower(\"" + selections[i].id + "\");' ></a>");
+					//alert(selections[i].id);
 				}
 				i++;
 			});

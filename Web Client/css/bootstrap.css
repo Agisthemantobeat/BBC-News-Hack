@@ -40,6 +40,41 @@ audio:not([controls]) {
   display: none;
 }
 
+#left {
+	z-index:1000;
+	overflow-y:scroll;
+	width: 50%;
+	height:100%;
+	display: block;
+	float: left;
+}
+
+#right {
+	width: 50%;
+	display: block;
+	float: right;
+}
+
+#previewbox {
+	font-size: 14pt;
+	background-color: #FFFFFF;
+	margin: 2px;
+	border-radius: 4px;
+}
+
+.headline {
+	font-size: 12pt;
+	padding-left: 10px;
+	border: 1px solid #C0C0C0;
+	background-color: #EFEFEF;
+	margin: 2px;
+	border-radius: 4px;
+}
+
+.headline:hover {
+	cursor: hand;
+}
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -5292,7 +5327,7 @@ a.list-group-item.active > .badge,
 }
 
 .lower_view {
-	
+	z-index:5;
 	bottom:0px;
 	margin-bottom:0;
 	margin-left:auto;
