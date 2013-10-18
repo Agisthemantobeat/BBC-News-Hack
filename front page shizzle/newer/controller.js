@@ -84,7 +84,7 @@ var frontPage = createSection();
 var technology = createSection();
 
 $.ajax({
-		  url: "http://euanmorrison.co.uk/newshack/euan/interface.php?url=http://bbc.api.mashery.com/content/asset/news/" + "front_page" + "?api_key=" + "55e5w5gwnjyfg7z5rd7v8s93",
+		  url: "interface.php?url=http://bbc.api.mashery.com/content/asset/news/" + "front_page" + "?api_key=" + "55e5w5gwnjyfg7z5rd7v8s93",
 		  success: function( data ) {
 			frontPage.extractSectionIndexData(jQuery.parseJSON(data));
 		  }
@@ -92,7 +92,7 @@ $.ajax({
 	
 
 $.ajax({
-		  url: "http://euanmorrison.co.uk/newshack/euan/interface.php?url=http://bbc.api.mashery.com/content/asset/news/" + "technology" + "?api_key=" + "55e5w5gwnjyfg7z5rd7v8s93",
+		  url: "interface.php?url=http://bbc.api.mashery.com/content/asset/news/" + "technology" + "?api_key=" + "55e5w5gwnjyfg7z5rd7v8s93",
 		  success: function( data ) {
 			technology.extractSectionIndexData(jQuery.parseJSON(data));
 		  }
@@ -153,9 +153,9 @@ $(document).on('click', "div.headline", function() {
     buildPreview(frontPage.stories,this.id);    
 });
 
-$( document ).ready(function() {
+/*$( document ).ready(function() {
 	$( "#mybutton" ).click(function() {
 		//buildHeadlines();
 		buildHeadlines(frontPage.stories);
 	});
-});
+});*/
