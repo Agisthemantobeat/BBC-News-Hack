@@ -9,7 +9,9 @@
 	<script>
 	
 	var nodes = [];
-
+	var links = [];
+	
+	
 	getSectionIndex("http://www.bbc.co.uk/things/4993e6b8-4214-44eb-9c66-67929058850f", "55e5w5gwnjyfg7z5rd7v8s93");
 	
 	function getSectionIndex(section, key) {
@@ -18,8 +20,24 @@
 		 
 		  success: function( data ) {
 			extractSectionIndexData(jQuery.parseJSON(data));
+			buildLinks();
 		  }
 		});
+	}
+	
+	function buildLinks() {
+		for (var i = 0; i < nodes.length; i++) {
+			if (i % 2 != 0) {
+				var link = {
+					source: i,
+					target: i+1,
+					value: i,
+					distance: 5
+				};
+				
+				links.push(link);
+			}
+		}
 	}
 	
 	function extractSectionIndexData(data) {
