@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+
+
+
+$.getJSON( "data.json", function( data ) {
+
+var data2 = data;
+alert(data.nodes[0].name);
+
+$.each( data.nodes, function(i,item){
+     i++;
+
+	//alert( item.name);
+});
+
+$.each( data.links, function(i,item){
+     i++;
+
+	alert( item.source);
+});
+
+
+
+
+});
+
+
+  });
+});
+</script>
+</head>
+<body>
+
+<button>Get JSON data</button>
+<div></div>
+
+</body>
+</html>

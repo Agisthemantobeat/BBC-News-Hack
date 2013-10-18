@@ -1,0 +1,129 @@
+<?php
+
+ini_set('display_errors', 0);	// hide warnings in PHP
+require('guardiansources.php');	// Guardian locations
+
+// collect URL parameters
+$location = "".$_GET['l'];
+$query = "".$_GET['q'];
+
+// pass to controller method
+jobHunt($guardiansources,$location,$query);
+
+/*
+	CONTROLLER METHOD
+*/
+function jobHunt($guardiansources,$location,$query)
+{
+	if($location == "all") {
+		// updates all locations for a 7-day period
+		updateAll($guardiansources);
+	}
+	else {
+		foreach($guardiansources as $city) {
+			if($location == $city) {
+				// update one location for a single-day period
+				updateCity($location,$query);
+				break;
+			}
+		}
+	}
+} // end controller method
+
+
+function updateAll($guardiansources) {
+	foreach($guardiansources as $location) {
+		//echo $location;
+		$data = runSearch($location,"");
+		//var_dump($data);
+		$jobsarray = populateArray($data,$location);
+		//var_dump($jobsarray);
+		$bigarray[] = $jobsarray;
+	}
+	
+	// collapse big array to make it flat
+	foreach($bigarray as $jobset) {
+		foreach($jobset as $job) {
+			$finalarray[] = $job;
+		}
+	}
+	
+	$json = arrayToJson($finalarray);
+	echo $json;
+} // end updateall method
+
+
+function updateCity($location,$query) {
+	$data = runSearch($location,$query);
+	$array = populateArray($data,$location);
+	$json = arrayToJson($array);
+	echo $json;
+} // end updatecity method
+
+
+/*
+	SET UP SEARCH PARAMETERS
+*/
+function runSearch($location,$query) {
+	$json = file_get_contents('http://jobs.theguardian.com/jobsjson/?Keywords='.$location.'&CountryCode=GB&NumDisplayResults=50');
+	return $json;
+} // end runsearch method
+
+
+
+/*
+	BREAK DOWN RESULTS INTO JOB OBJECTS
+	POPULATE ARRAY
+*/
+function populateArray($json,$location) {
+	// decode results to array
+	$data = json_decode($json, true);
+	
+	foreach ($data['JobAdverts']['Jobs'] as $item) {
+		$found = FALSE;
+		
+		if(strpos(strtolower($item['Title']),"".$location."") !== FALSE) {
+			$found = TRUE;
+		}
+		if($found === FALSE) {
+			if(strpos(strtolower($item['Description']),"".$location."") !== FALSE) {
+				$found = TRUE;
+			}
+		}
+		
+		//echo (string)$found;
+		
+		//exit;
+		if ($found === true) {
+			$timestamp 		=	time() - rand ( 0 , (60*60*24*3) );
+			$title 			=	strip_tags($item['Title']);
+			$description 	=	strip_tags($item['Description']);
+			$salary 		=	strip_tags($item['SalaryDescription']);
+			$url 			=	strip_tags($item['DetailsUrl']);
+				
+			$job = array(	'timestamp' 	=> 		$timestamp,
+							'city'			=>		$location,
+							'employer'		=>		"", // not provided by source
+							'title' 		=> 		$title,
+							'description' 	=> 		$description,
+							'salary'		=>		$salary,
+							'source'		=>		"guardian",
+							'url' 			=> 		$url
+						 );
+				
+			$jobarray[] = $job; // add job object to new array
+		}
+	} 
+	return $jobarray;
+} // end populatearray method
+
+
+
+/*
+	convert array to JSON
+*/
+function arrayToJson($results) {
+	return json_encode($results);
+}
+
+?>

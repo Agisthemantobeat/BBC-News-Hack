@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	
+	<script>
+	
+	var stories = [];
+
+	getSectionIndex("url dcterms:identifier '24563189'", "55e5w5gwnjyfg7z5rd7v8s93");
+	
+	function getSectionIndex(section, key) {
+		var apiCall = encodeURI("http://bbc.api.mashery.com/juicer-ld-api/articles.json?binding=url&limit=5&where=?" + section + "&api_key=" + key);
+		$.ajax({
+		  url: "http://euanmorrison.co.uk/newshack/euan/interface.php?url=" + apiCall,
+		 
+		  success: function( data ) {
+			extractSectionIndexData(data);
+		  }
+		});
+	}
+	
+	function extractSectionIndexData(data) {
+		var articles = data.articles[0];
+		var storylines = articles.storylines;
+		if(typeof storylines != 'undefined')
+		{
+			var uri = storylines[0].uri;	
+		}
+	}
+	
+	</script>
+</head>
+<body>
+
+<div id="content">
+
+</div>
+	
+
+</body>
+</html>

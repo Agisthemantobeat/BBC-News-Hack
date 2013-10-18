@@ -1,0 +1,23 @@
+[
+	{
+		"category": "Trending",
+		"sectionId": "front_page"
+	}, 	
+	{
+		"category": "Technology",
+		"sectionId": "technology"
+	},
+		{
+		"category": "US & Canada",
+		"sectionId": "world/us_and_canada"
+	},
+		{
+		"category": "England",
+		"sectionId": "england"
+	},
+	{
+		"category": "Scotland",
+		"sectionId": "scotland"
+	}
+	
+]
