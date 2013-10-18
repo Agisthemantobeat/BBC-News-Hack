@@ -1,0 +1,23 @@
+[
+	{
+		"category": "Trending",
+		"sectionId": "front_page"
+	}, 	
+	{
+		"category": "World",
+		"sectionId": "world"
+	},
+		{
+		"category": "UK",
+		"sectionId": "uk"
+	},
+		{
+		"category": "England",
+		"sectionId": "england"
+	},
+	{
+		"category": "Scotland",
+		"sectionId": "scotland"
+	}
+	
+]
