@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
-
+    <!--<link rel="shortcut icon" href="../../assets/ico/favicon.png">
+-->
     <title>Theme Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
@@ -15,12 +15,13 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="theme.css" rel="stylesheet">
-
+    <!--<link href="theme.css" rel="stylesheet">
+-->
     <!-- JQuery -->
-    <script src="js/jquery-2.0.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <!--<script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
-
+-->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -68,7 +69,8 @@
     <div class="container theme-showcase">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <div class="jumbotron" >
+		<?php include('canvas.php'); ?>
         <!--<h1>News in a dash!</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>-->
@@ -82,8 +84,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../assets/js/jquery.js"></script>
+    <!--<script src="../../assets/js/jquery.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/holder.js"></script>
+    <script src="../../assets/js/holder.js"></script>-->
   </body>
 </html>
