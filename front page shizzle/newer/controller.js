@@ -26,7 +26,12 @@ function createSection() {
 				media: items[0].media,
 				assetUri: items[0].assetUri,
 				headline: items[0].headline
-			};					
+			};
+			
+			var re = new RegExp(/\d+$/);
+			var id = re.exec(story.assetUri);
+			story.id = id;
+								
 			this.stories.push(story);
 		},
 
